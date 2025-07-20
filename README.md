@@ -22,8 +22,8 @@ A SaaS-style timesheet management app built with Next.js 15, NextAuth, and Tailw
 
    Create a `.env` file in the root (already present in this repo):
    ```
-   NEXT_PUBLIC_BASE_URL=http://localhost:3000
-   NEXTAUTH_SECRET=secret
+   NEXTAUTH_URL = https://ticktock-timesheet-management-app-1020.vercel.app
+   NEXTAUTH_SECRET = secret
    ```
 
 4. **Run the development server**
@@ -61,15 +61,16 @@ A SaaS-style timesheet management app built with Next.js 15, NextAuth, and Tailw
 
 - Analysis & Planning: 1 hours
 - Project Setup: 2 hours
+- Mock Data Structuring: 2 hours
 - Authentication: 3 hours
 - API Integration	: 5 hours
 - Error Handling & Validation	: 2 hours
-- UI Styling : 6 hours
+- UI Styling : 5.5 hours
 - Debugging : 1.5 hour
 - Final Polish & Cleanup : 2 hours
 
   
-Total : 24 hours
+Total : approximate 24 hours
 
 ---
 
