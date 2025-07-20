@@ -15,7 +15,7 @@ const page = async ({ params, searchParams }) => {
   const totalHours = 40;
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const baseUrl = process.env.NEXTAUTH_URL;
     const res = await fetch(`${baseUrl}/api/timesheets/${id}`, {
       cache: "no-store",
     });

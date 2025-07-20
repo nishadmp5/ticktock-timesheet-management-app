@@ -15,7 +15,7 @@ const Timesheets = async () => {
     const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    const baseUrl = process.env.NEXTAUTH_URL;
     const res = await fetch(`${baseUrl}/api/timesheets`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
