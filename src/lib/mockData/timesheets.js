@@ -20,6 +20,18 @@ export const timesheets = [
         endDate: "19-01-2024",
         trackedHours: 0,
       },
+      {
+        id: "wk4",
+        startDate: "22-01-2024",
+        endDate: "26-01-2024",
+        trackedHours: 40,
+      },
+      {
+        id: "wk5",
+        startDate: "29-01-2024",
+        endDate: "02-02-2024",
+        trackedHours: 34,
+      },
     ],
   },
 ];

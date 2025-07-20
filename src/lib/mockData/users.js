@@ -8,5 +8,5 @@ export const users = [
         name: 'John Doe',
         email: 'john@example.com',
         password,
-    }
+    },
 ]
