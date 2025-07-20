@@ -14,14 +14,21 @@ const Timesheets = async () => {
   try {
     const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
+    console.log(userId,"userid");
+    
 
     const baseUrl = process.env.NEXTAUTH_URL;
+    console.log(baseUrl,"baseUrl");
+    
     const res = await fetch(`${baseUrl}/api/timesheets`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId }),
       cache: "no-store",
     });
+
+    console.log(res,"response");
+    
 
     if (!res.ok) {
       const errorData = await res.json();
