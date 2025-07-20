@@ -22,7 +22,7 @@ A SaaS-style timesheet management app built with Next.js 15, NextAuth, and Tailw
 
    Create a `.env` file in the root (already present in this repo):
    ```
-   NEXTAUTH_URL=http://localhost:3000
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000
    NEXTAUTH_SECRET=secret
    ```
 

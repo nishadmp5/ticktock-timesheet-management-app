@@ -56,7 +56,7 @@ const page = () => {
               Email
             </label>
             <input
-              id="password"
+              id="email"
               placeholder="name@example.com"
               type="email"
               value={email}
