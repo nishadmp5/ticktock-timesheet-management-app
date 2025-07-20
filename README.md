@@ -9,7 +9,7 @@ A SaaS-style timesheet management app built with Next.js 15, NextAuth, and Tailw
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/nishadmp5/ticktock-timesheet-management-app
+   git clone https://github.com/nishadmp5/ticktock-timesheet-management-app.git
    cd ticktock-timesheet-management-app
    ```
 
