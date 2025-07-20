@@ -33,6 +33,9 @@ A SaaS-style timesheet management app built with Next.js 15, NextAuth, and Tailw
 
 5. **Open [http://localhost:3000](http://localhost:3000) in your browser**
 
+6. Mock Email : john@example.com
+   Mock Password: test123
+
 ---
 
 ## Frameworks/Libraries Used
