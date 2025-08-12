@@ -102,7 +102,7 @@ const page = () => {
         </form>
         <div className="absolute bottom-12 w-full ">
           <p className="text-center font-normal text-14 leading-5 tracking-0 text-secondary">
-            © 2024 tentwenty
+            © 2024 abcd
           </p>
         </div>
       </div>

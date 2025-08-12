@@ -1,40 +1,9 @@
-import React from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
 import { getWeekRange } from "@/lib/utils";
 import Link from "next/link";
 
-const Timesheets = async () => {
+const Timesheets = ({timesheetsData}) => {
   const tableHeadings = ["WEEK #", "Date", "Status", "ACTIONS"];
   const totalHours = 40;
-
-  let timesheetsData = [];
-  let fetchError = null;
-
-  try {
-    const session = await getServerSession(authOptions);
-    const userId = session?.user?.id;
-
-    const baseUrl = process.env.NEXTAUTH_URL;
-
-    const res = await fetch(`${baseUrl}/api/timesheets`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId }),
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      const errorData = await res.json();
-      console.log(errorData?.error || "Failed to fetch timesheets.");
-      fetchError = errorData?.error || "Failed to fetch timesheets.";
-    } else {
-      timesheetsData = await res.json();
-    }
-  } catch (error) {
-    console.log(error?.message || "An unexpected error occured.");
-    fetchError = error?.message || "An unexpected error occured.";
-  }
 
   const getTimesheetStatusInfo = (trackedHours, totalHours) => {
     let status;
@@ -58,16 +27,7 @@ const Timesheets = async () => {
     return { status, statusClasses, actionTitle };
   };
 
-  // Show error message if fetch failed
-  if (fetchError) {
-    return (
-      <div className="w-full h-[200px] flex justify-center items-center">
-        <p className="text-danger font-medium text-14 leading-5 tracking-0">
-          {fetchError}
-        </p>
-      </div>
-    );
-  }
+
 
   if (!timesheetsData || timesheetsData.length === 0)
     return (
