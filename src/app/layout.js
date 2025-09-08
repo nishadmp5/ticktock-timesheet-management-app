@@ -6,7 +6,7 @@ const fontInter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   preload: true,
-  weight: ["300", "400", "500", "600","700","800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata = {
@@ -16,23 +16,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html className={`${fontInter.variable}`}  lang="en">
-      <body
-      >
+    <html className={`${fontInter.variable}`} lang="en">
+      <body>
         {children}
-         <ToastContainer
-      position="top-center"
-      autoClose={2000}
-      hideProgressBar
-      newestOnTop={false}
-      closeOnClick={false}
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="colored"
-      transition={Flip}
-    />
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Flip}
+        />
       </body>
     </html>
   );

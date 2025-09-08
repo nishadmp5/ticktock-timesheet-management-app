@@ -15,7 +15,7 @@ const page = () => {
     if (!email || !password) {
       toast.error("Email and password are required.");
       return false;
-    }
+    } 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address.");
