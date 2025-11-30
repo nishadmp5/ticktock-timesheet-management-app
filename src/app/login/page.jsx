@@ -111,12 +111,12 @@ const page = () => {
       <div className="h-full w-1/2 bg-primary flex justify-center items-center px-18">
         <div className="w-full flex flex-col">
           <h1 className="font-semibold text-40 leading-5 tracking-0 text-white">
-            ticktock
+            taskbit
           </h1>
           <p className="font-normal text-base leading-5 tracking-0 text-[#E5E7EB] mt-3">
-            Introducing ticktock, our cutting-edge timesheet web application
+            Introducing taskbit, our cutting-edge timesheet web application
             designed to revolutionize how you manage employee work hours. With
-            ticktock, you can effortlessly track and monitor employee attendance
+            taskbit, you can effortlessly track and monitor employee attendance
             and productivity from anywhere, anytime, using any
             internet-connected device.
           </p>

@@ -1,5 +1,5 @@
 
-# Ticktock Timesheet Management App
+# Taskbit Timesheet Management App
 
 A SaaS-style timesheet management app built with Next.js 15, NextAuth, and TailwindCSS.
 

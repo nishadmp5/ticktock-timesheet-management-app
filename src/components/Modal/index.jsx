@@ -38,7 +38,7 @@ const Modal = ({ children, show, className, handleClose, ...props }) => {
                   tabIndex="-1"
                 >
                   <div
-                    className={`relative pointer-events-auto bg-white z-10  w-full transition-[transform,opacity] will-change-[opacity,transform] rounded-lg overflow-hidden  h-screen xl:h-[75%] xl:max-w-[60%] max-w-none
+                    className={`relative pointer-events-auto bg-white z-10  w-full transition-[transform,opacity] will-change-[opacity,transform] rounded-lg overflow-hidden  h-screen xl:h-[75%] xl:max-w-160 max-w-none
                     ${className}`}
                     {...props}
                   >
