@@ -1,55 +1,49 @@
 import { users } from "./mockData/users";
 import bcrypt from "bcrypt";
+import CredentialsProvider from "next-auth/providers/credentials";
+import connectToDatabase from "./dbConnect";
+import User from "./models/user";
 
 export const authOptions = {
+  session: {
+    strategy: "jwt",
+  },
   providers: [
-    {
-      id: "credentials",
-      name: "Credentials",
-      type: "credentials",
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
+    CredentialsProvider({
+      name:"Credentials",
+      credentials:{
+        email:{label:"Email",type:"email"},
+        password:{label:"Password",type:"password"}
       },
-      async authorize(credentials) {
-        const user = users.find((u) => u.email === credentials.email);
-        if (
-          user &&
-          (await bcrypt.compare(credentials.password, user.password))
-        ) {
-          return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            remember: credentials.remember === "true",
-          };
+      async authorize(credentials){
+        await connectToDatabase;
+
+        const user =await User.findOne({email:credentials.email});
+
+        if(!user){
+          throw new Error("No user found with this email")
         }
-        return null;
-      },
-    },
+
+        const isValid = credentials.password === user.password;
+
+        if(!isValid){
+          throw new Error("Incorrect Password")
+        }
+
+        return {id:user._id,email:user.email,name:user.username};
+      }
+    })
   ],
   pages: {
     signIn: "/login",
   },
-  session: {
-    strategy: "jwt",
-  },
-  secret: process.env.NEXTAUTH_SECRET || "supersecret",
+  
   callbacks: {
-    async session({ session, token }) {
-      if (session.user && token) {
-        session.user.id = token.id;
+    async session({session,token}){
+      if(token){
+        session.user.id = token.sub;
       }
       return session;
-    },
-    async jwt({ token, user , account, trigger, session }) {
-      if (user) {
-        token.id = user.id;
-        token.remember = user.remember ?? false;
-        token.iat = Math.floor(Date.now() / 1000);
-        token.exp = token.iat + (user.remember ? 60 * 60 * 24 * 30 : 60 * 60 * 24); 
-      }
-      return token;
-    },
+    }
   },
 };
