@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
@@ -126,4 +126,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

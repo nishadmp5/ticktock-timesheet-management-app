@@ -1,4 +1,3 @@
-import { users } from "./mockData/users";
 import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import connectToDatabase from "./dbConnect";
@@ -10,13 +9,13 @@ export const authOptions = {
   },
   providers: [
     CredentialsProvider({
-      name:"Credentials",
+      name:"credentials",
       credentials:{
         email:{label:"Email",type:"email"},
         password:{label:"Password",type:"password"}
       },
       async authorize(credentials){
-        await connectToDatabase;
+        await connectToDatabase();
 
         const user =await User.findOne({email:credentials.email});
 

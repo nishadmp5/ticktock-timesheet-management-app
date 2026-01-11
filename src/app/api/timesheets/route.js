@@ -1,22 +1,37 @@
-import { timesheets } from "@/lib/mockData/timesheets";
+import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth"; // To get the logged in user
+import connectToDatabase from "@/lib/dbConnect";
+import Timesheet from "@/lib/models/timesheet";
+import { authOptions } from "@/lib/auth";
 
-export async function POST(req) {
+export const GET = async (request) => {
   try {
-    const { userId } = await req.json();
-    if (!userId) {
-      return Response.json({ error: "Missing userId" }, { status: 400 });
-    }
+    // 1. Security: Get the session
+    const session = await getServerSession(authOptions);
 
-    const userData = timesheets.find((t) => t.userId === userId);
-    if (!userData) {
-      return Response.json(
-        { error: "User timesheet not found" },
-        { status: 404 }
+    if (!session || !session.user) {
+      return NextResponse.json(
+        { message: "Unauthorized" },
+        { status: 401 }
       );
     }
 
-    return Response.json(userData.userTimesheets);
+    // 2. Connect to DB
+    await connectToDatabase();
+
+    // 3. Fetch Data
+    // Find timesheets belonging to THIS user only.
+    // Sort by Year (desc) and WeekNumber (desc) so newest is top.
+    const timesheets = await Timesheet.find({ user: session.user.id })
+      .sort({ year: -1, weekNumber: -1 });
+
+    // 4. Return Data
+    return NextResponse.json({ timesheets }, { status: 200 });
+
   } catch (error) {
-    return Response.json({ error: "Internal server error" });
+    return NextResponse.json(
+      { message: "Error fetching timesheets", error: error.message },
+      { status: 500 }
+    );
   }
-}
+};
